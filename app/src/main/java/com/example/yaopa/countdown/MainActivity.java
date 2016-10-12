@@ -72,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
         toast.cancel();
     }
 
+
+
+
+
+
     public void show(String msg) {
         if (toast == null) {
             toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
