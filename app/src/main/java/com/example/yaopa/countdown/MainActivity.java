@@ -60,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        countDownView.stop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        toast.cancel();
+    }
+
     public void show(String msg) {
         if (toast == null) {
             toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);

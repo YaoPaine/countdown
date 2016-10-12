@@ -45,6 +45,8 @@ public class CountDownView extends View {
     private float time;
     private int initProgress;
 
+    private CountDownTimer countDownTimer;
+
     public CountDownView(Context context) {
         this(context, null);
     }
@@ -148,7 +150,7 @@ public class CountDownView extends View {
         if (time == 0f) time = 3f;
         final long l = (long) (time * 1000);
 
-        new CountDownTimer(l, 36) {
+        countDownTimer = new CountDownTimer(l, 36) {
             @Override
             public void onTick(long millisUntilFinished) {
                 /*progress = initProgress + (int) (((2600 - millisUntilFinished) * 1.0f / 3600) * 360);*/
@@ -166,6 +168,12 @@ public class CountDownView extends View {
                 }
             }
         }.start();
+    }
+
+    public void stop() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
     }
 
     public interface CountDownListner {
